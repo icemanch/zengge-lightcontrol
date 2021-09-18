@@ -108,9 +108,6 @@ func (m *Manager) Auth() (string, error) {
 	if len(parts) < 3 {
 		return "", fmt.Errorf("Unparsable response from lightbulb: %s", response)
 	}
-	if parts[2] != "HF-LPB100-ZJ200" {
-		return "", fmt.Errorf("Unknown firmware version: %s", parts[2])
-	}
 	response, err = m.ReliableRequestReceive("+ok")
 	if err != nil {
 		return "", err
